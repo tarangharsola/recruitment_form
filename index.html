@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recurse Recruitment 2025</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Orbitron', sans-serif;
+      background: black;
+      color: #00FFCC;
+      overflow-x: hidden;
+    }
+
+    .screen {
+      height: 100%;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      transition: all 0.5s ease-in-out;
+    }
+
+    #logo-screen img {
+      width: 260px;
+      animation: fadeInZoom 2.5s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeInZoom {
+      0% { opacity: 0; transform: scale(0.7); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    #info-screen {
+      opacity: 0;
+      display: none;
+      animation: fadeUp 1s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .content {
+      text-align: center;
+      padding: 20px;
+      max-width: 750px;
+    }
+
+    h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+      color: #00ffee;
+    }
+
+    p {
+      font-size: 16px;
+      margin: 10px 0;
+      line-height: 1.6;
+    }
+
+    a {
+      color: #00FFCC;
+      text-decoration: underline;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    a:hover {
+      transform: scale(1.15);
+      color: #00ffee;
+      text-shadow: 0 0 10px #00ffee;
+    }
+
+    #continue-btn {
+      margin-top: 30px;
+      padding: 14px 40px;
+      font-size: 18px;
+      font-family: 'Orbitron', sans-serif;
+      background: transparent;
+      color: #00FFCC;
+      border: 2px solid #00FFCC;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.4s ease;
+      box-shadow: 0 0 10px #00FFCC, 0 0 20px #00FFCC inset;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #continue-btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 255, 204, 0.2);
+      transform: skewX(-20deg);
+      transition: 0.4s;
+    }
+
+    #continue-btn:hover::before {
+      left: 100%;
+    }
+
+    #continue-btn:hover {
+      background: #00FFCC;
+      color: #000;
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #00FFCC, 0 0 40px #00FFCC inset;
+    }
+
+    .particle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #00ffee;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: sparkle 0.9s ease-out forwards;
+      box-shadow: 0 0 10px #00ffee, 0 0 20px #00ffee;
+      z-index: 999;
+    }
+
+    @keyframes sparkle {
+      to {
+        transform: translate(var(--x), var(--y)) scale(0.2);
+        opacity: 0;
+      }
+    }
+
+    #loading-text {
+      margin-top: 15px;
+      font-size: 16px;
+      color: #00ffee;
+      display: none;
+      animation: fadeUp 0.5s ease-in-out forwards;
+    }
+
+    @media (max-width: 600px) {
+      h2 { font-size: 24px; }
+      p { font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Splash Logo Screen -->
+<div id="logo-screen" class="screen">
+  <img src="recurse-logo.png" alt="Recurse Club Logo" />
+</div>
+
+<!-- Info Screen -->
+<div id="info-screen" class="screen">
+  <div class="content">
+    <h2>Recurse Recruitment 2025 💻</h2>
+    <p><strong>If you have filled the form previously, you do not need to fill it again!</strong></p>
+    <p><strong>Eligibility:</strong> 1st and 2nd year students</p>
+    <p>👩‍💻 Anyone with passion for technology and problem solving is welcome to apply.<br>See you at the recruitment!</p>
+    <p><strong>Round 1:</strong> Applications through Google Form<br>
+       Start Date: 31 May 2025<br>
+       End Date: 5 June 2025, 11:59 PM</p>
+    <p><strong>Round 2:</strong> Quiz Round<br><em>Date & Time: TBD</em></p>
+    <p><strong>Round 3:</strong> One-off Interviews<br><em>Date & Time: TBD</em></p>
+    <p>📸 Follow <strong><a href="https://www.instagram.com/recurse.official" target="_blank">@recurse.official</a></strong> on Instagram for all updates.</p>
+    <button id="continue-btn">Continue</button>
+    <div id="loading-text">Loading form...</div>
+  </div>
+</div>
+
+<script>
+  window.onload = () => {
+    const logo = document.getElementById("logo-screen");
+    const info = document.getElementById("info-screen");
+
+    setTimeout(() => {
+      logo.style.opacity = 0;
+      setTimeout(() => {
+        logo.style.display = "none";
+        info.style.display = "flex";
+        setTimeout(() => info.style.opacity = 1, 50);
+      }, 800);
+    }, 3000);
+  };
+
+  const button = document.getElementById("continue-btn");
+  const loadingText = document.getElementById("loading-text");
+
+  button.addEventListener("click", (e) => {
+    for (let i = 0; i < 30; i++) {
+      const particle = document.createElement("div");
+      particle.className = "particle";
+
+      const x = (Math.random() - 0.5) * 200;
+      const y = (Math.random() - 0.5) * 200;
+
+      particle.style.left = e.clientX + "px";
+      particle.style.top = e.clientY + "px";
+      particle.style.setProperty('--x', `${x}px`);
+      particle.style.setProperty('--y', `${y}px`);
+
+      document.body.appendChild(particle);
+
+      setTimeout(() => {
+        particle.remove();
+      }, 1000);
+    }
+
+    loadingText.style.display = 'block';
+
+    // Optional redirect
+    // setTimeout(() => {
+    //   window.location.href = "form.html";
+    // }, 1500);
+  });
+</script>
+
+</body>
+</html>
