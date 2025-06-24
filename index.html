@@ -140,6 +140,9 @@
       position: relative;
       backdrop-filter: blur(20px);
       overflow: hidden;
+      /* Add scroll for content if needed */
+      max-height: 90vh;
+      overflow-y: auto;
     }
 
     .content::before {
@@ -292,14 +295,19 @@
 
     /* Form Container */
     .form-container {
+      display: flex;
       align-items: center;
-      max-height: 90vh;
-      overflow-y: auto;
+      justify-content: center;
+      min-height: 100vh;
       width: 100%;
       padding: 20px 0;
+      box-sizing: border-box;
+      overflow-y: auto;
       scroll-behavior: smooth;
       scrollbar-width: thin;
       scrollbar-color: var(--primary) transparent;
+      background: linear-gradient(120deg, rgba(0,255,204,0.04) 0%, rgba(255,0,128,0.03) 100%);
+      backdrop-filter: blur(8px);
     }
 
     .form-container::-webkit-scrollbar {
@@ -525,7 +533,7 @@
     <p><strong>If you have filled the form previously, you do not need to fill it again!</strong></p>
     <p><strong>Eligibility:</strong> 1st and 2nd year students</p>
     <p>👩‍💻 Passionate about tech and problem solving? Apply!</p>
-    <p><strong>Round 1:</strong> Google Form<br>Start: 31 May 2025<br>End: 5 June 2025</p>
+    <p><strong>Round 1:</strong> Online Form<br>Start: 31 May 2025<br>End: 5 June 2025</p>
     <p><strong>Round 2:</strong> Quiz — <em>Date TBD</em></p>
     <p><strong>Round 3:</strong> Interviews — <em>Date TBD</em></p>
     <p>📸 Follow <a href="https://instagram.com/recurse.official" target="_blank" rel="noopener"> @recurse.official</a></p>
