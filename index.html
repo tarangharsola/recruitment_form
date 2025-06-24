@@ -499,6 +499,32 @@
       50% { transform: translateY(-50%) rotate(180deg) scale(1.2); }
     }
 
+    /* Awesome Custom Scrollbar - Global */
+    body, .content, .form-container {
+      scrollbar-width: thin;
+      scrollbar-color: var(--primary) var(--bg-darker);
+    }
+    
+    body::-webkit-scrollbar, .content::-webkit-scrollbar, .form-container::-webkit-scrollbar {
+      width: 10px;
+      background: var(--bg-darker);
+    }
+    body::-webkit-scrollbar-thumb, .content::-webkit-scrollbar-thumb, .form-container::-webkit-scrollbar-thumb {
+      background: linear-gradient(120deg, var(--primary), var(--accent), var(--secondary));
+      border-radius: 12px;
+      box-shadow: 0 0 16px 4px var(--primary), 0 0 8px 2px var(--accent);
+      border: 2px solid var(--bg-darker);
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    body::-webkit-scrollbar-thumb:hover, .content::-webkit-scrollbar-thumb:hover, .form-container::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(120deg, var(--accent), var(--primary), var(--secondary));
+      box-shadow: 0 0 24px 8px var(--accent), 0 0 12px 4px var(--primary);
+    }
+    body::-webkit-scrollbar-track, .content::-webkit-scrollbar-track, .form-container::-webkit-scrollbar-track {
+      background: var(--bg-darker);
+      border-radius: 12px;
+    }
+
     /* Responsive Design */
     @media (max-width: 768px) {
       h2 { font-size: 28px; letter-spacing: 2px; }
